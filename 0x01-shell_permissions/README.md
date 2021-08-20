@@ -13,3 +13,4 @@ mirroir permission
 directort
 chmod
 owner change
+101-symbolic_link_permissions
