@@ -4,3 +4,4 @@ add group
 chowchew
 empty file
 chmod
+multiple permission
