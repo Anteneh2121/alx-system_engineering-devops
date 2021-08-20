@@ -8,3 +8,4 @@ multiple permission
 every body
 every time
 jo-de
+mirroir permission
