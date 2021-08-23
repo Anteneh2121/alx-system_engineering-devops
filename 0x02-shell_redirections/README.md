@@ -17,3 +17,4 @@ nomore tolk
 what next
 end of
 nomono
+a to z print
