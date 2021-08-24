@@ -9,3 +9,4 @@ more local variable
 prints the result of the addition of 128 with the value stored in the environment variable
 Divide and rule
 10-love_exponent_breath
+11-binary_to_decimal
