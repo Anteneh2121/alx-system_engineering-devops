@@ -1,7 +1,7 @@
-print hello_world
-please smile
-passwored set
-print two file
+print hello_world.
+displays a confused smiley.
+Display the content of the /etc/passwd file.
+Display the content of /etc/passwd and /etc/hosts.
 follow
 etc
 itcea
