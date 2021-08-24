@@ -14,3 +14,4 @@ Divide and rule
 13-print_float
 100-decimal_to_hexadecimal
 101-rot13
+The eggs of the brood need to be an odd number
