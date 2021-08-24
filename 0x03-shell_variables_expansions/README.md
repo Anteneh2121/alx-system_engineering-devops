@@ -6,3 +6,4 @@ Global variable
 Local variables
 more local variable
 7-create_global_variable
+prints the result of the addition of 128 with the value stored in the environment variable
