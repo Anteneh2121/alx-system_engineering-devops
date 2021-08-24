@@ -5,3 +5,4 @@ If the path be beautiful, let us not ask where it leads
 Global variable
 Local variables
 more local variable
+7-create_global_variable
