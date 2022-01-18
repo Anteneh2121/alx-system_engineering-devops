@@ -8,9 +8,9 @@ them using Ruby's Oniguruma library.
 _Note: Each Ruby script in the project matches regular expressions based on an
 argument passed to it via the command line._
 
-* **0. Simply matching Holberton**
-  * [0-simply_match_holberton.rb](./0-simply_match_holberton.rb): Ruby script that
-  matches the regular expression `Holberton`.
+* **0. Simply matching School**
+  * [0-simply_match_school.rb](./0-simply_match_school.rb): Ruby script that
+  matches the regular expression `School`.
 
 * **1. Repetition Token #0**
   * [1-repetition_token_0.rb](./1-repetition_token_0.rb): Ruby script that matches
@@ -51,7 +51,3 @@ argument passed to it via the command line._
     if present).
     * `[FLAGS]` is the flags that were used.
 
-* **9. Pass LinkedIn technical interview level0**
-  * [101-passed_linkedin_regex_challenge.jpg](./101-passed_linkedin_regex_challenge.jpg):
-  Screenshot signifying completion of the
-  [LinkedIn Engineering Regex Puzzle](https://engineering.linkedin.com/puzzle).
