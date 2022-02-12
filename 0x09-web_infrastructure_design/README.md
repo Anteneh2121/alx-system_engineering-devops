@@ -1,4 +1,17 @@
-## Description
+#  0x09. Web infrastructure design
+
+## Concepts
+![DNS](https://alx-intranet.hbtn.io/concepts/12)
+![Monitoring](https://alx-intranet.hbtn.io/concepts/13)
+![Web Server](https://alx-intranet.hbtn.io/concepts/17)
+![Network basics](https://alx-intranet.hbtn.io/concepts/33)
+![Load balancer](https://alx-intranet.hbtn.io/concepts/46)
+![Server](https://alx-intranet.hbtn.io/concepts/67)
+
+## Description of each task
+
+
+## 0: Description
 
 This is a simple web infrastructure that hosts a website that is reachable via `www.foobar.com`. There are no firewalls or SSL certificates for protecting the server's network. Each component (database, application server) has to share the resources (CPU, RAM, and SSD) provided by the server.
 
@@ -27,7 +40,7 @@ This is a simple web infrastructure that hosts a website that is reachable via `
 
 + Cannot scale if there's too much incoming traffic.<br/>It would be hard to scale this infrastructure becauses one server contains the required components. The server can quickly run out of resources or slow down when it starts receiving a lot of requests.
 
-# Distributed Web Infrastructure
+# 1: Distributed Web Infrastructure
 ## Description
 
 This is a distributed web infrastructure that atttempts to reduce the traffic to the primary server by distributing some of the load to a replica server with the aid of a server responsible for balancing the load between the two servers (primary and replica).
@@ -45,7 +58,7 @@ This is a distributed web infrastructure that atttempts to reduce the traffic to
 + Security issues.<br/>The data transmitted over the network isn't encrypted using an SSL certificate so hackers can spy on the network. There is no way of blocking unauthorized IPs since there's no firewall installed on any server.
 + No monitoring.<br/>We have no way of knowing the status of each server since they're not being monitored.
 
-# Secured and Monitored Web Infrastructure
+# 2: Secured and Monitored Web Infrastructure
 
 ## Description
 
@@ -63,7 +76,7 @@ This is a 3-server web infrastructure that is secured, monitored, and serves enc
 + Having one MySQL server is an issue because it is not scalable and can act as a single point of failure for the web infrastructure.
 + Having servers with all the same components would make the components contend for resources on the server like CPU, Memory, I/O, etc., which can lead to poor performance and also make it difficult to locate the source of the problem. A setup such as this is not easily scalable. 
 
-# Scaled Up Web Infrastructure
+# 3: Scaled Up Web Infrastructure
 ## Description
 
 This web infrastructure is a scaled up version of the infrastructure described [here](2-secured_and_monitored_web_infrastructure.md). In this version, all SPOFs have been removed and each of the major components (web server, application server, and database servers) have been moved to separate GNU/Linux servers. The SSL protection isn't terminated at the load-balancer and each server's network is protected with a firewall and they're also monitored.
