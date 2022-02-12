@@ -1,9 +1,9 @@
 #  0x09. Web infrastructure design
 
 ## Concepts
-[DNS](https://alx-intranet.hbtn.io/concepts/12)
+[DNS](https://alx-intranet.hbtn.io/concepts/12)                     [What is a database](https://searchdatamanagement.techtarget.com/definition/database)
 
-[Monitoring](https://alx-intranet.hbtn.io/concepts/13)
+[Monitoring](https://alx-intranet.hbtn.io/concepts/13)              
 
 [Web Server](https://alx-intranet.hbtn.io/concepts/17)
 
