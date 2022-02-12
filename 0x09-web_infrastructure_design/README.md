@@ -2,16 +2,22 @@
 
 ## Concepts
 [DNS](https://alx-intranet.hbtn.io/concepts/12)
+
 [Monitoring](https://alx-intranet.hbtn.io/concepts/13)
+
 [Web Server](https://alx-intranet.hbtn.io/concepts/17)
+
 [Network basics](https://alx-intranet.hbtn.io/concepts/33)
+
 [Load balancer](https://alx-intranet.hbtn.io/concepts/46)
+
 [Server](https://alx-intranet.hbtn.io/concepts/67)
 
-## Description of each task
+##  Tasks 
 
+##  0. Simple web stack
 
-## 0: Description
+##  Description
 
 This is a simple web infrastructure that hosts a website that is reachable via `www.foobar.com`. There are no firewalls or SSL certificates for protecting the server's network. Each component (database, application server) has to share the resources (CPU, RAM, and SSD) provided by the server.
 
