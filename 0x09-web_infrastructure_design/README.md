@@ -4,7 +4,7 @@
        
  [DNS](https://alx-intranet.hbtn.io/concepts/12)                       [What is a database](https://searchdatamanagement.techtarget.com/definition/database)
 
-[Monitoring](https://alx-intranet.hbtn.io/concepts/13)              
+[Monitoring](https://alx-intranet.hbtn.io/concepts/13)                 [What’s the difference between a web server and an app server?](https://www.youtube.com/watch?v=S97eKyv2b9M)          
 
 [Web Server](https://alx-intranet.hbtn.io/concepts/17)
 
