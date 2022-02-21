@@ -17,6 +17,17 @@ contained follows:
 * [0x08. Networking basics #1](./0x08-networking_basics_2)
 * [0x09. Web infrastructure design](./0x09-web_infrastructure_design)
 
+## Author :black_nib:
+
+* __Anteneh Kassaw Bizuneh__ <[Anteneh2121](https://github.com/Anteneh2121)>
+
+## Acknowledgements :pray:
+
+All work contained in this project was completed as part of the curriculum for
+ALX, Holberton School.ALX,  Holberton School is a campus-based full-stack software
+engineering program that prepares students for careers in the tech industry
+using project-based peer learning. For more information, visit
+[this link](https://www.holbertonschool.com/).
 
 
 
