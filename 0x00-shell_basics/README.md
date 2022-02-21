@@ -89,6 +89,8 @@ creating links, and using keyboard shortcuts in Bash.
     * Alpha-ordered, except for the directories `.` and `..` which are listed at the beginning.
     * Only digits and letters are used to sort - digits come first.
 
-* **19. File type: SCHOOL**
+* **19. File type: School**
   * [school.mgc](./school.mgc): A magic file that can be used with the command `file` to
   detect `school` data files.
+  ## Author
+  **' Anteneh kassaw Bizuneh '
