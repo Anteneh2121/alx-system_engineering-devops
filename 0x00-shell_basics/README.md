@@ -34,18 +34,18 @@ creating links, and using keyboard shortcuts in Bash.
     * Long format.
     * User and group ID's displayed numerically.
 
-* **6. Welcome holberton**
+* **6. Welcome schol**
   * [6-firstdirectory](./6-firstdirectory): Bash script that creates a directory named `holberton`
   in the `/tmp/` directory.
 
-* **7. Betty in Holberton**
+* **7. Betty in school**
   * [7-movethatfile](./7-movethatfile): Bash script that moves the file `betty` from `/tmp/` to
   `/tmp/holberton`.
 
 * **8. Bye bye Betty**
   * [8-firstdelete](./8-firstdelete): Bash script that deletes the file `betty` in `/tmp/holberton`.
 
-* **9. Bye bye Holberton**
+* **9. Bye bye school**
   * [9-firstdirdeletion](./9-firstdirdeletion): Bash script that deletes the directory `holberton`
   in the `/tmp` directory.
 
