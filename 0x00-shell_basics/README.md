@@ -93,4 +93,4 @@ creating links, and using keyboard shortcuts in Bash.
   * [school.mgc](./school.mgc): A magic file that can be used with the command `file` to
   detect `school` data files.
   ## Author
-  **' Anteneh kassaw Bizuneh '
+  **Anteneh kassaw Bizuneh 
