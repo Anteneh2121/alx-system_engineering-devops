@@ -23,3 +23,12 @@ in the Shell.
 
 * **4. Empty!**
   * [4-empty](./4-empty): Bash script that creates an empty file called `hello`.
+
+* **5. Execute**
+  * [5-execute](./5-execute): Bash script that adds execute permissions to the owner
+  of the file `hello`.
+
+* **6. Multiple permissions**
+  * [6-multiple_permissions](./6-multiple_permissions): Bash script that adds
+  execute permission to the owner and the group owner, and read permission to
+  other users, for the file `hello`.
