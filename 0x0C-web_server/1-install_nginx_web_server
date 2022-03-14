@@ -10,3 +10,4 @@ sudo ufw status
 systemctl status nginx
 echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
 sudo service nginx restart
+
