@@ -4,11 +4,12 @@
 #+    Returns a page containing "Hello World!" when queried
 #++    at the root with a curl GET request.
 
-apt-get update
-apt-get install -y nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
-mkdir /etc/nginx/html
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo mkdir /etc/nginx/html
+sudo touch /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
@@ -17,4 +18,4 @@ printf %s "server {
 }
 " > /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
