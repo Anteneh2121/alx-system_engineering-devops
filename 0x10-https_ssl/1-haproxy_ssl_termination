@@ -1,38 +1,54 @@
+#!/usr/bin/env bash
+#!nstall_load_balancere/usr/bin/env bash
+# Installs HAProxy version 2.0 with the following configurations:
+#+    Enables management via the init script.
+#+    Distributes requests using a round-robin algorithm.
+
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.0
+apt-get update
+apt-get install haproxy=2.0.\*
+
+echo "ENABLED=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
+
+printf %s "
 global
-    log 127.0.0.1 local0 notice
-    maxconn 2000
-    user haproxy
-    group haproxy
+    log     /dev/log local0
+    maxconn 2048
+    user    haproxy
+    group   haproxy
+    tune.ssl.default-dh-param 2048
 defaults
     log     global
     mode    http
     option  httplog
     option  dontlognull
     retries 3
-    option redispatch
+    option  redispatch
     timeout connect  5000
     timeout client  10000
     timeout server  10000
-listen hbnb
-    bind 0.0.0.0:80
-    mode http
-    stats enable
-    stats uri /haproxy?stats
-    balance roundrobin
-    option httpclose
-    option forwardfor
-    server 1701-web-01 35.237.92.54 check
-    server 1701-web-02 3.238.90.226 check
+    option  forwardfor
+    option  http-server-close
+frontend http_front
+   bind *:80
+   reqadd X-Forwarded-Proto:\ http
+   stats uri /haproxy?stats
+   default_backend http_back
+frontend https_front
+    bind   *:443 ssl crt /etc/haproxy/certs/anten.tech.pem
+    reqadd X-Forwarded-Proto:\ https
+    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+    default_backend http_back
+backend http_back
+   balance roundrobin
+   server 1701-web-01 35.237.92.54:80 check
+   server 1701-web-02 3.238.90.226:80 check
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:54321
+" >> /etc/haproxy/haproxy.cfg
 
-frontend firstbalance
-        bind *:80
-        option forwardfor
-        default_backend webservers
-
-backend webservers
-        balance roundrobin
-        server 1701-web-01 35.237.92.54:80
-        server 1701-web-02 3.238.90.226:80
-        server 1701-web-01 35.237.92.54:80 check
-        server 1701-web-02 3.238.90.226:80 check
-        option httpchk
+service haproxy start
