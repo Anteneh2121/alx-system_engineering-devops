@@ -23,3 +23,16 @@ listen hbnb
     option forwardfor
     server 1701-web-01 35.237.92.54 check
     server 1701-web-02 3.238.90.226 check
+
+frontend firstbalance
+        bind *:80
+        option forwardfor
+        default_backend webservers
+
+backend webservers
+        balance roundrobin
+        server 1701-web-01 35.237.92.54:80
+        server 1701-web-02 3.238.90.226:80
+        server 1701-web-01 35.237.92.54:80 check
+        server 1701-web-02 3.238.90.226:80 check
+        option httpchk
