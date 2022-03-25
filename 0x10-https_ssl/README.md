@@ -5,7 +5,7 @@ configured my AirBnB web servers with `certbot` certificate and HAproxy
 SSL termination.
 
 * **0. World wide web**
-  * [0-world_wide_web](./1-world_wide_web): Bash script that displays
+  * [0-world_wide_web](./0-world_wide_web): Bash script that displays
   information about subdomains on my configured servers.
   * Usage: `./1-world_wide_web <domain> <subdomain>`
   * Output: `The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and
@@ -14,7 +14,7 @@ SSL termination.
   subdomains `www`, `lb-01`, `web-01` and `web-02`, in that order.
 
 * **1. HAproxy SSL termination**
-  * [1-haproxy_ssl_termination](./2-haproxy_ssl_termination): HAproxy
+  * [1-haproxy_ssl_termination](./1-haproxy_ssl_termination): HAproxy
   configuration file that accepts encrypted SSL traffic for the subdomain
   `www.` on TCP port 443.
 
