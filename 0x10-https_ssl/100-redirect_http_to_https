@@ -24,18 +24,19 @@ frontend www-http
     default_backend www-backend
     redirect scheme https code 301 if !{ ssl_fc }
 
+
 frontend www-https
-    bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/www.anten.tech.pem
-    reqadd X-Forwarded-Proto:\ https
-    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
-    default_backend www-backend
+   bind   0.0.0.0:443 ssl crt /etc/letsencrypt/live/www.anten.tech/all.pem
+   reqadd X-Forwarded-Proto:\ https
+   acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
+   use_backend letsencrypt-backend if letsencrypt-acl
+   default_backend www-backend
 
 backend www-backend
-    balance  roundrobin
-    redirect scheme https if !{ ssl_fc }
-    server 1701-web-01 35.237.92.54 :80 check
-    server 1701-web-02 3.238.90.226:80 check
+   balance  roundrobin
+   redirect scheme https if !{ ssl_fc }
+   server 1701-web-01 35.237.92.54:80 check
+   server 1701-web-02 3.238.90.226:80 check
 
 backend letsencrypt-backend
-    server letsencrypt 127.0.0.1:54321
+   server letsencrypt 127.0.0.1:54321
