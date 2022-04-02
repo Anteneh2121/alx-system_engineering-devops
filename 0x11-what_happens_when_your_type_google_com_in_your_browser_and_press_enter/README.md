@@ -10,13 +10,7 @@ website] into a browser and hit `Enter`?
 * **0. What happens when...**
   * [0-blog_post](./0-blog_post): Text file containing the link to my blog post.
   
-  # What happens when you type https://www.google.com in your browser and press Enter
-
-This project contains tasks that show if you understand how the internet works from a high-level perspective.
-
-## Tasks To Complete
-
-+ [x] 0. What happens when...<br/>_**[0-blog_post](0-blog_post)**_ contains the URL (preferrably Medium or LinkedIn URL) to a blog post that addresses the following requirements.
+  
   + **INFO**:
     + This question is a classic and still widely used interview question for many types of software engineering position. It is used to assess a candidate's general knowledge of how the web stack works on top of the internet. One important guideline to begin answering this question is that you should ask your interviewer whether they would like you to focus in on one specific area of the workflow. For a front-end position they may want you to talk at length about how the DOM is rendering. For an SRE position they may want you to go into the load balancing mechanism.
     + This question is a good test of whether you understand DNS. Many software engineering candidates struggle with this concept, so if you do well on this question, you are already way ahead of the curve. If you take this project seriously and write an excellent article, it may be something that will grab the attention of future employers.
