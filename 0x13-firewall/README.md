@@ -1,7 +1,7 @@
 # Firewall
 
 In this project, I used `ufw` to configure firewalls on my issued web servers.
-
+In computing, a firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.[1] A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.
 ## Tasks :page_with_curl:
 
  
