@@ -1,50 +1,54 @@
 #!/usr/bin/python3
-"""
-Contains the recurse method
-"""
-from collections import defaultdict
-import random
+""" raddit api"""
+
+import json
 import requests
-user_agent = "User Agent{:d}".format(random.randrange(1000, 9999))
-header = {'User-Agent': user_agent}
 
 
-def count_words(subreddit, word_list, base=0, keywords={}, after=""):
-    """
-    Creates a list of all the titles of the hot list
-    input:
-        subreddit: the name of a reddit subreddit
-        hot_list: list to be filled with the sub reddit name
-    return: host_list or None otherwise
-    """
-    if keywords == {}:
-        word_list = [word.lower() for word in word_list]
-        word_list = list(set(word_list))
-        keywords = defaultdict(int)
-    url = "https://www.reddit.com/r/{}/.json".format(subreddit)
-    r = requests.get(url, headers=header, params={"after": after},
-                     allow_redirects=False)
-    if r.status_code == 200:
-        r_dict = r.json()
-        for reddit_post in r_dict["data"]["children"]:
-            title_words = reddit_post['data']['title'].lower().split()
-            for title_word in title_words:
-                for word in word_list:
-                    if word == title_word:
-                        keywords[word] += 1
-        after = r_dict['data']['after']
+def count_words(subreddit, word_list, after="", count=[]):
+    """count all words"""
+
+    if after == "":
+        count = [0] * len(word_list)
+
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    request = requests.get(url,
+                           params={'after': after},
+                           allow_redirects=False,
+                           headers={'user-agent': 'bhalut'})
+
+    if request.status_code == 200:
+        data = request.json()
+
+        for topic in (data['data']['children']):
+            for word in topic['data']['title'].split():
+                for i in range(len(word_list)):
+                    if word_list[i].lower() == word.lower():
+                        count[i] += 1
+
+        after = data['data']['after']
         if after is None:
-            return keywords
+            save = []
+            for i in range(len(word_list)):
+                for j in range(i + 1, len(word_list)):
+                    if word_list[i].lower() == word_list[j].lower():
+                        save.append(j)
+                        count[i] += count[j]
+
+            for i in range(len(word_list)):
+                for j in range(i, len(word_list)):
+                    if (count[j] > count[i] or
+                            (word_list[i] > word_list[j] and
+                             count[j] == count[i])):
+                        aux = count[i]
+                        count[i] = count[j]
+                        count[j] = aux
+                        aux = word_list[i]
+                        word_list[i] = word_list[j]
+                        word_list[j] = aux
+
+            for i in range(len(word_list)):
+                if (count[i] > 0) and i not in save:
+                    print("{}: {}".format(word_list[i].lower(), count[i]))
         else:
-            count_words(subreddit, word_list,
-                                   base + 1, keywords, after)
-    else:
-        return None
-    # only to be executed for before the recursive
-    if base is 0:
-        keywords_list = list(keywords.items())
-        keywords_list = sorted(keywords_list, key=lambda x: x[1], reverse=True)
-        for pair in keywords_list:
-            if pair[1] is not 0:
-                print("{}: {}".format(pair[0], pair[1]))
-    return keywords
+            count_words(subreddit, word_list, after, count)
