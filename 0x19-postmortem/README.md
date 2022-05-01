@@ -11,3 +11,9 @@ simple ALX WordPress site.
 Bug Anteneh Kassaw (BAK... as in my actual initials... made that up on the spot, pretty
 good, huh?) encountered the issue upon opening the project and being, well, instructed to
 address it, roughly 16:20 PST. He promptly proceeded to undergo solving the problem.
+
+1. Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
+were properly running.
+
+2. Looked in the `sites-available` folder of the `/etc/apache2/` directory. Determined that
+the web server was serving content located in `/var/www/html/`.
