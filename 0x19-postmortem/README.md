@@ -35,3 +35,27 @@ matching to try and locate the erroneous `.phpp` file extension. Located it in t
 7. Tested another `curl` on the server. 200 A-ok!
 
 8. Wrote a Puppet manifest to automate fixing of the error.
+
+## Summation
+
+In short, In full, the WordPress app was encountering a critical
+error in `wp-settings.php` when tyring to load the file `class-wp-locale.phpp`. The correct
+file name, located in the `wp-content` directory of the application folder, was
+`class-wp-locale.php`.
+
+Patch involved a simple fix on the typo, removing the trailing `p`.
+
+## Prevention
+
+This outage was not a web server error, but an application error. To prevent such outages
+moving forward, please keep the following in mind.
+
+* Test! Test test test. Test the application before deploying. This error would have arisen
+and could have been addressed earlier had the app been tested.
+
+* Status monitoring. Enable some uptime-monitoring service such as
+[UptimeRobot](./https://uptimerobot.com/) to alert instantly upon outage of the website.
+
+
+
+
