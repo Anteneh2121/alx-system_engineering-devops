@@ -25,3 +25,9 @@ information.
 4. Repeated step 3, except on the PID of the `www-data` process. Kept expectations lower this
 time... but was rewarded! `strace` revelead an `-1 ENOENT (No such file or directory)` error
 occurring upon an attempt to access the file `/var/www/html/wp-includes/class-wp-locale.phpp`.
+
+5. Looked through files in the `/var/www/html/` directory one-by-one, using Vim pattern
+matching to try and locate the erroneous `.phpp` file extension. Located it in the
+`wp-settings.php` file. (Line 137, `require_once( ABSPATH . WPINC . '/class-wp-locale.php' );`).
+
+
