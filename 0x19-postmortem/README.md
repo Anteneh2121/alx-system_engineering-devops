@@ -63,8 +63,3 @@ replaces any `phpp` extensions in the file `/var/www/html/wp-settings.php` with 
 
 But of course, it will never occur again, because we're programmers, and we never make
 errors! :wink:
-
-
-
-
-
