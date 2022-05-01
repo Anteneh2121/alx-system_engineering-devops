@@ -6,35 +6,44 @@ Ubuntu 20.04 container running an Apache web server. GET requests on the server 
 `500 Internal Server Error`'s, when the expected response was an HTML file defining a
 simple ALX WordPress site.
 
+
+
+25-04-2022, 18:00, The problem occured.
+25-04-2022, 18:30, Checked running processes.
+25-04-2022, 20:00, 
+
+
 ## Debugging Process
 
 Bug Anteneh Kassaw (BAK... as in my actual initials... made that up on the spot, pretty
 good, huh?) encountered the issue upon opening the project and being, well, instructed to
-address it, roughly 16:20 PST. He promptly proceeded to undergo solving the problem.
+address it, roughly 18:00 PST. He promptly proceeded to undergo solving the problem.
 
-1. Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
+## Time line
+
+1. 25-04-2022, 18:00, Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
 were properly running.
 
-2. Looked in the `sites-available` folder of the `/etc/apache2/` directory. Determined that
+2. 25-04-2022, 18:30, Looked in the `sites-available` folder of the `/etc/apache2/` directory. Determined that
 the web server was serving content located in `/var/www/html/`.
 
-3. In one terminal, ran `strace` on the PID of the `root` Apache process. In another, curled
+3.25-04-2022, 20:00, In one terminal, ran `strace` on the PID of the `root` Apache process. In another, curled
 the server. Expected great things... only to be disappointed. `strace` gave no useful
 information.
 
-4. Repeated step 3, except on the PID of the `www-data` process. Kept expectations lower this
+4. 25-04-2022, 20:30, Repeated step 3, except on the PID of the `www-data` process. Kept expectations lower this
 time... but was rewarded! `strace` revelead an `-1 ENOENT (No such file or directory)` error
 occurring upon an attempt to access the file `/var/www/html/wp-includes/class-wp-locale.phpp`.
 
-5. Looked through files in the `/var/www/html/` directory one-by-one, using Vim pattern
+5. 25-04-2022, 21:00,Looked through files in the `/var/www/html/` directory one-by-one, using Vim pattern
 matching to try and locate the erroneous `.phpp` file extension. Located it in the
 `wp-settings.php` file. (Line 137, `require_once( ABSPATH . WPINC . '/class-wp-locale.php' );`).
 
-6. Removed the trailing `p` from the line.
+6. 25-04-2022, 21:30,Removed the trailing `p` from the line.
 
-7. Tested another `curl` on the server. 200 A-ok!
+7. 25-04-2022, 21:40,Tested another `curl` on the server. 200 A-ok!
 
-8. Wrote a Puppet manifest to automate fixing of the error.
+8. 26-04-2022, 20:00, Wrote a Puppet manifest to automate fixing of the error.
 
 ## Summation
 
