@@ -30,4 +30,8 @@ occurring upon an attempt to access the file `/var/www/html/wp-includes/class-wp
 matching to try and locate the erroneous `.phpp` file extension. Located it in the
 `wp-settings.php` file. (Line 137, `require_once( ABSPATH . WPINC . '/class-wp-locale.php' );`).
 
+6. Removed the trailing `p` from the line.
 
+7. Tested another `curl` on the server. 200 A-ok!
+
+8. Wrote a Puppet manifest to automate fixing of the error.
