@@ -1,74 +1,33 @@
 # Postmortem
 
-Upon the release of ALX System Engineering & DevOps project 0x19,
-approximately 00:00 Pacific Standard Time (PST), an outage occurred on an isolated
-Ubuntu 20.04 container running an Apache web server. GET requests on the server led to
-`500 Internal Server Error`'s, when the expected response was an HTML file defining a
-simple ALX WordPress site.
+This project contains tasks for learning about writing a postmortem.
 
+## Tasks To Complete
 
++ [x] 0. My first postmortem<br/>_**[README.md](https://medium.com/@antukassaw1/postmortem-500-error-outage-d2d1bb7ef11c)**_ contains a blog post that meets the following requirements:
+  + **INFO:**
+    + Using one of the web stack debugging project issue or an outage you have personally face, write a postmortem. Most of you will never have faced an outage, so just get creative and invent your own :)
+    + While postmortem format can vary, stick to this one so that you can get properly reviewed by your peers.
+  + **Requirements:**
+    + Issue Summary (that is often what executives will read) must contain:
+      + Duration of the outage with start and end times (including timezone).
+      + What was the impact? (What service was down/slow? What were user experiencing? How many % of the users were affected?)
+      + What was the root cause?
+    + Timeline (format bullet point, format: `time` - `keep it short, 1 or 2 sentences`) must contain:
+      + When was the issue detected?
+      + How was the issue detected (monitoring alert, an engineer noticed something, a customer complained…)
+      + Actions taken (what parts of the system were investigated, what were the assumption on the root cause of the issue).
+      + Misleading investigation/debugging paths that were taken.
+      + Which team/individuals was the incident escalated to?
+      + How the incident was resolved.
+    + Root cause and resolution must contain:
+      + Explain in detail what was causing the issue.
+      + Explain in detail how the issue was fixed.
+    + Corrective and preventative measures must contain:
+      + What are the things that can be improved/fixed (broadly speaking)
+      + A list of tasks to address the issue (be very specific, like a TODO, example: patch Nginx server, add monitoring on server memory…).
+      + Be brief and straight to the point, between 400 to 600 words
 
-25-04-2022, 18:00, The problem occured.
-25-04-2022, 18:30, Checked running processes.
-25-04-2022, 20:00, 
-
-
-## Debugging Process
-
-Bug Anteneh Kassaw (BAK... as in my actual initials... made that up on the spot, pretty
-good, huh?) encountered the issue upon opening the project and being, well, instructed to
-address it, roughly 18:00 PST. He promptly proceeded to undergo solving the problem.
-
-## Time line
-
-1. 25-04-2022, 18:00, Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
-were properly running.
-
-2. 25-04-2022, 18:30, Looked in the `sites-available` folder of the `/etc/apache2/` directory. Determined that
-the web server was serving content located in `/var/www/html/`.
-
-3.25-04-2022, 20:00, In one terminal, ran `strace` on the PID of the `root` Apache process. In another, curled
-the server. Expected great things... only to be disappointed. `strace` gave no useful
-information.
-
-4. 25-04-2022, 20:30, Repeated step 3, except on the PID of the `www-data` process. Kept expectations lower this
-time... but was rewarded! `strace` revelead an `-1 ENOENT (No such file or directory)` error
-occurring upon an attempt to access the file `/var/www/html/wp-includes/class-wp-locale.phpp`.
-
-5. 25-04-2022, 21:00,Looked through files in the `/var/www/html/` directory one-by-one, using Vim pattern
-matching to try and locate the erroneous `.phpp` file extension. Located it in the
-`wp-settings.php` file. (Line 137, `require_once( ABSPATH . WPINC . '/class-wp-locale.php' );`).
-
-6. 25-04-2022, 21:30,Removed the trailing `p` from the line.
-
-7. 25-04-2022, 21:40,Tested another `curl` on the server. 200 A-ok!
-
-8. 26-04-2022, 20:00, Wrote a Puppet manifest to automate fixing of the error.
-
-## Summation
-
-In short, In full, the WordPress app was encountering a critical
-error in `wp-settings.php` when tyring to load the file `class-wp-locale.phpp`. The correct
-file name, located in the `wp-content` directory of the application folder, was
-`class-wp-locale.php`.
-
-Patch involved a simple fix on the typo, removing the trailing `p`.
-
-## Prevention
-
-This outage was not a web server error, but an application error. To prevent such outages
-moving forward, please keep the following in mind.
-
-* Test! Test test test. Test the application before deploying. This error would have arisen
-and could have been addressed earlier had the app been tested.
-
-* Status monitoring. Enable some uptime-monitoring service such as
-[UptimeRobot](https://uptimerobot.com/) to alert instantly upon outage of the website.
-
-Note that in response to this error, I wrote a Puppet manifest
-[0-strace_is_your_friend.pp](https://github.com/Anteneh2121/alx-system_engineering-devops/blob/main/0x17-web_stack_debugging_3/0-strace_is_your_friend.pp)
-to automate fixing of any such identitical errors should they occur in the future. The manifest
-replaces any `phpp` extensions in the file `/var/www/html/wp-settings.php` with `php`.
-
-But of course, it will never occur again, because we're programmers, and we never make
-errors! :wink:
++ [x] 1. Make people want to read your postmortem
+  + We are constantly stormed by a quantity of information, it’s tough to get people to read you.
+  + Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.
