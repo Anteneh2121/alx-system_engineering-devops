@@ -17,8 +17,9 @@ For the benchmarking, we are using ApacheBench which is a quite popular tool in 
  * [0-the_sky_is_the_limit_not.pp](./0-the_sky_is_the_limit_not.pp): Puppet manifest
   that increases the amount of traffic an Apache web server can effectively handle.
 
-* **1. User limit**
-Change the OS configuration so that it is possible to login with the holberton user and open a file without any error message.
+* **1. User limit** 
+
+`Change the OS configuration so that it is possible to login with the holberton user and open a file without any error message.`
 
   * [1-user_limit.pp](./1-user_limit.pp): Puppet manifest that changes the operating system
   configuration so that it is possible to login with the user `holberton` and open a file
