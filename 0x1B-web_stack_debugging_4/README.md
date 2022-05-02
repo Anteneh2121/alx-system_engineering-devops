@@ -21,6 +21,6 @@ web stack.`
 
 `Change the OS configuration so that it is possible to login with the holberton user and open a file without any error message.`
 
-  `* [1-user_limit.pp](./1-user_limit.pp): Puppet manifest that changes the operating system
+  * [1-user_limit.pp](./1-user_limit.pp): `Puppet manifest that changes the operating system
   configuration so that it is possible to login with the user `holberton` and open a file
   without error.`
