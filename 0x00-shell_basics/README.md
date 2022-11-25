@@ -1,5 +1,5 @@
 # Shell, basics
-[shell](https://github.com/Anteneh2121/alx-system_engineering-devops/edit/main/0x00-shell_basics/README.md)
+
 In this project, I underwent an introductory crash course in the Shell. I
 learned how to navigate directories using `cd`, `pwd`, `ls`, how to look
 around using `ls`, `less`, and `file`, and how to manipulate files with `cp`,
